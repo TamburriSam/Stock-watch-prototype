@@ -6,20 +6,11 @@ import { useEffect } from "react";
 import Container1 from "./Container1";
 import DateTimePicker from "react-datetime-picker";
 import DailyAverage from "./DailyAverage";
-
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import "./Font.css";
 const finnhub = require("finnhub");
-const firebaseConfig = {
-  apiKey: "AIzaSyDniJDNDWsdTyKcBBPf8MzaghGUVE6Mfeo",
-  authDomain: "stock-track-76e74.firebaseapp.com",
-  projectId: "stock-track-76e74",
-  storageBucket: "stock-track-76e74.appspot.com",
-  messagingSenderId: "623608527796",
-  appId: "1:623608527796:web:897fd73dcccd304b1250e1",
-};
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
 const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
 const db = firebase.firestore();
@@ -36,8 +27,8 @@ function Container(props) {
   const [currentPrice, setCurrentPrice] = useState("");
   const [twoDayAgoPrice, setTwoDayAgoPrice] = useState("");
   const [count, setCount] = useState("");
-  const [value, onChange] = useState(new Date());
-  const [value2, onChange2] = useState(new Date());
+  const [value, onChange] = useState();
+  const [value2, onChange2] = useState();
   const [formattedValue, setformattedValue] = useState("");
   const [formattedValueEnd, setformattedValueEnd] = useState("");
   const [dailyAverage, setdailyAverage] = useState("");
@@ -134,10 +125,6 @@ function Container(props) {
     setStockName(e.target.value);
   };
 
-  const submit = () => {
-    auth.signInWithPopup(provider).catch(alert);
-  };
-
   const handleChange = () => {
     //
     setStartTick(true);
@@ -174,8 +161,11 @@ function Container(props) {
         console.log(allNums);
 
         let average = allNums.reduce((a, b) => a + b, 0) / allNums.length;
-
+        console.log(average);
+        setdailyAverage(average);
+        //////////////////////////
         //error here not sure why
+        //because u need to use the date picker first than calc daily avg
         /*         setdailyAverage(average.toString());
          */
       });
@@ -217,35 +207,51 @@ function Container(props) {
 
   //quick styles
   const divStyle = {
-    border: "2px solid blue",
+    border: "1px solid #d7ecff",
+    width: "90vw",
+    position: "relative",
+    margin: "auto",
+    borderRadius: "15px",
+    padding: "10px",
+    marginTop: "30px",
+    marginBottom: "30px",
+    boxShadow: "0px 3px 12px 1px #d7ecff",
   };
 
-  return (
-    <div style={divStyle}>
-      <button onClick={submit}>Sign in with Google</button>
+  //CAN USE CLOUD FUNCTIONS FOR WHEN ITS CONSIDERED A GOOD TIME TO BUY A PHONE
+  //LIKE SEND A TEXT MSG OR EMAIL OR NOTIFICATION
 
+  return (
+    <div className='container' style={divStyle}>
       <h2>{time}</h2>
 
-      <h2 style={{ position: "absolute", right: "0" }}>{dailyAverage}</h2>
+      <h3 style={{ position: "absolute", right: "10px" }}>
+        Daily Average: {dailyAverage}
+      </h3>
 
       <Indicator stockName={stockName} />
-      <p>{currentPrice}</p>
+      <h3>Current Price: {currentPrice}</h3>
       <input placeholder='Stock Symbol' onChange={(e) => setStock(e)}></input>
       <button onClick={handleChange}>Submit</button>
       <br></br>
-      <h3>Date Range 1 (Start)</h3>
+      <h4>Date Range 1 (Start)</h4>
       <DateTimePicker onChange={onChange} value={value} />
       <br></br>
-      <h3>Date Range 2 (End)</h3>
+      <h4>Date Range 2 (End)</h4>
       <DateTimePicker onChange={onChange2} value={value2} />
       <br></br>
-      <button>Low Average by Range </button>
-      <button>High Average by Range</button>
+      <Button variant='outlined'>Low Average by Range </Button>
+      <Button variant='outlined'>High Average by Range</Button>
+
       <br></br>
-      <button onClick={DailyAverage}>Daily Average</button>
-      <button onClick={RangeAverage}>Range Average</button>
-      <button>Average by time (range)</button>
-      <button>Average by time (all time)</button>
+      <Button variant='outlined' onClick={DailyAverage}>
+        Daily Average
+      </Button>
+      <Button variant='outlined' onClick={RangeAverage}>
+        Range Average
+      </Button>
+      <Button variant='outlined'>Average by time (range)</Button>
+      <Button variant='outlined'>Average by time (all time)</Button>
     </div>
   );
 }

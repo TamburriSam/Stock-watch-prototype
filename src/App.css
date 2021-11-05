@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500&family=Dongle:wght@300;400;700&display=swap");
+
+#title {
+  font-family: "Comfortaa", cursive;
+  color: #121212;
+  top: -20px;
+  left: 20px;
+  position: absolute;
+}
+
+#subtitle {
+  font-family: "Comfortaa", cursive;
+  top: 0px;
+  color: #121212;
+  font-size: 14px;
+  left: 140px;
+  position: absolute;
+}
+
+.container {
+  font-family: "Comfortaa", cursive;
+}
+
+#googleSignIn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#Nav {
+  position: relative;
+
+  width: 100vw;
+  height: 35px;
+  border: 1px solid black;
+}

@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
     "@material-ui/lab": "*",
     "@mui/material": "^5.0.6",
+    "@mui/styled-engine-sc": "^5.0.4",
     "@polygon.io/client-js": "^3.0.0",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
@@ -17,7 +20,9 @@
     "react-datetime-picker": "^3.4.2",
     "react-dom": "^17.0.2",
     "react-firebaseui": "^5.0.2",
+    "react-icons": "^4.3.1",
     "react-scripts": "4.0.3",
+    "styled-components": "^5.3.3",
     "web-vitals": "^1.1.2",
     "yahoo-finance": "^0.3.7",
     "yahoo-stock-api": "^1.0.11"
