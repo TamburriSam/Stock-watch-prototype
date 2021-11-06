@@ -208,7 +208,7 @@ function Container(props) {
   //quick styles
   const divStyle = {
     border: "1px solid #d7ecff",
-    width: "90vw",
+    width: "60vw",
     position: "relative",
     margin: "auto",
     borderRadius: "15px",
