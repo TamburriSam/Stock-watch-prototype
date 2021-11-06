@@ -3,7 +3,7 @@ import "./App.css";
 import Container from "./components/Container";
 import firebase from "firebase";
 import Button from "@mui/material/Button";
-
+import Cli from "./components/Cli";
 import { GiReceiveMoney } from "react-icons/gi";
 
 const auth = firebase.auth();
@@ -63,7 +63,7 @@ function App() {
   return (
     <div>
       <div id='Nav'>
-        <GiReceiveMoney />
+        <Cli />
 
         <h1 id='title'>Divitia</h1>
         <h2 id='subtitle'>Stock & Crypto Tracker</h2>
@@ -74,6 +74,10 @@ function App() {
 
       <Button
         variant='outlined'
+        style={{
+          position: "relative",
+          left: "50px",
+        }}
         onClick={() => {
           setpanels(panels + 1);
           console.log(panels);

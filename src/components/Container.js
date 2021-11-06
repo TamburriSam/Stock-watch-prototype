@@ -8,7 +8,11 @@ import DateTimePicker from "react-datetime-picker";
 import DailyAverage from "./DailyAverage";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+
 import "./Font.css";
+import Cli from "./Cli";
+
 const finnhub = require("finnhub");
 
 const auth = firebase.auth();
@@ -46,6 +50,7 @@ function Container(props) {
         minutes = minutes.toString().padStart(2, "0");
         let strTime = hours + ":" + minutes + " " + ampm;
         setCurrentTime(strTime);
+        console.log(strTime);
       }, 2000);
 
       return () => window.clearInterval(timeoutID);
@@ -85,6 +90,7 @@ function Container(props) {
   }, [value]);
 
   useEffect(() => {
+    console.log(time);
     if (time !== "") {
       console.log(stockName);
       console.log("ok");
@@ -208,7 +214,7 @@ function Container(props) {
   //quick styles
   const divStyle = {
     border: "1px solid #d7ecff",
-    width: "60vw",
+    width: "83vw",
     position: "relative",
     margin: "auto",
     borderRadius: "15px",
@@ -231,8 +237,16 @@ function Container(props) {
 
       <Indicator stockName={stockName} />
       <h3>Current Price: {currentPrice}</h3>
-      <input placeholder='Stock Symbol' onChange={(e) => setStock(e)}></input>
-      <button onClick={handleChange}>Submit</button>
+      <TextField
+        id='outlined-basic'
+        label='Stock Symbol'
+        variant='outlined'
+        onChange={(e) => setStock(e)}
+      />
+      <br></br>
+      <Button variant='outlined' onClick={handleChange}>
+        Submit
+      </Button>
       <br></br>
       <h4>Date Range 1 (Start)</h4>
       <DateTimePicker onChange={onChange} value={value} />

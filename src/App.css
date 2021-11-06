@@ -1,16 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500&family=Dongle:wght@300;400;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
 #title {
-  font-family: "Comfortaa", cursive;
+  font-family: "Montserrat", sans-serif;
   color: #121212;
-  top: -20px;
+  top: -23px;
   left: 20px;
   position: absolute;
 }
 
 #subtitle {
-  font-family: "Comfortaa", cursive;
+  font-family: "Montserrat", sans-serif;
   top: 0px;
   color: #121212;
   font-size: 14px;
@@ -19,7 +17,7 @@
 }
 
 .container {
-  font-family: "Comfortaa", cursive;
+  font-family: "Montserrat", sans-serif;
 }
 
 #googleSignIn {
@@ -30,8 +28,8 @@
 
 #Nav {
   position: relative;
-
+  margin-bottom: 15px;
   width: 100vw;
   height: 35px;
-  border: 1px solid black;
+  border: 1px solid rgb(153, 149, 149);
 }
