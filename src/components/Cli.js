@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import firebase from "firebase";
-
+import LoadedContainer from "./LoadedContainer";
 function Cli() {
   const db = firebase.firestore();
 
@@ -11,9 +11,23 @@ function Cli() {
     getData();
   }, []);
 
+  useEffect(() => {
+    if (nodes) {
+      let mappedNodes = Object.entries(nodes);
+      console.log(nodes);
+    }
+  }, []);
+
   const getData = () => {
     db.collection("companies").onSnapshot((snapshot) => {
-      setNodes(snapshot.docs);
+      let arr = [];
+
+      snapshot.docs.map((doc) => {
+        arr.push(doc.data());
+      });
+
+      setNodes(arr);
+
       setLoading(false);
     });
   };
@@ -26,13 +40,21 @@ function Cli() {
   //that iterates through node.id
   //an object of objects
   //this is where ur stuck
-  return (
-    <div style={{ marginTop: "100px" }}>
+
+  /*   console.log(mappedNodes);
+   */ return (
+    <div style={{ marginTop: "50px" }}>
       {nodes.map((node, index) => {
         return (
-          <div>
-            {/* test db loader */}
-            <h1 style={{ fontSize: "8px" }}>{node.id}</h1>
+          <div key={index + 1} style={{ position: "relative", top: "600px" }}>
+            {console.log(node.current_price, node.Symbol)}
+            {/*    {console.log(node.data.id)}
+            {console.log(Object.entries(nodes))} */}
+            <LoadedContainer
+              key={index + 1}
+              id={node.Symbol}
+              currentPrice={node.current_price}
+            />
           </div>
         );
       })}

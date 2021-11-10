@@ -1,13 +1,14 @@
+import firebase from "firebase";
 import { useEffect, useState } from "react";
 import "./App.css";
-import Container from "./components/Container";
-import firebase from "firebase";
 import Button from "@mui/material/Button";
+import Container from "./components/Container";
 import Cli from "./components/Cli";
-import { GiReceiveMoney } from "react-icons/gi";
+/* import Container from "./components/Container";
+ */ /* import Container from "./components/Container";
+import Cli from "./components/Cli";
+import { GiReceiveMoney } from "react-icons/gi"; */
 
-const auth = firebase.auth();
-const provider = new firebase.auth.GoogleAuthProvider();
 //PSEUDOCODE
 
 //I want to be able to enter a stock and add it to my "tracking" arsenal.
@@ -29,8 +30,11 @@ const firebaseConfig = {
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
+  console.log(firebaseConfig);
 }
 function App() {
+  const auth = firebase.auth();
+  const provider = new firebase.auth.GoogleAuthProvider();
   const [panels, setpanels] = useState(0);
   const [signedIn, setsignedIn] = useState(false);
   const [signInStatus, settsignInStatus] = useState("Sign in with Google");
@@ -61,7 +65,11 @@ function App() {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: "rgb(243,243,243,1)",
+      }}
+    >
       <div id='Nav'>
         <Cli />
 
@@ -71,7 +79,7 @@ function App() {
       <Button variant='outlined' onClick={submit} id='googleSignIn'>
         {signInStatus}
       </Button>
-
+      <Container />
       <Button
         variant='outlined'
         style={{
@@ -85,8 +93,6 @@ function App() {
       >
         Add Stock Tile
       </Button>
-
-      <Container />
 
       {Array.from({ length: panels }, (_, index) => (
         <Container key={index} />

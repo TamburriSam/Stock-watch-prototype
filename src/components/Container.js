@@ -1,26 +1,20 @@
+import firebase from "firebase";
 import { useState } from "react";
 import Indicator from "./Indicator";
-import firebase from "firebase";
 import dateFormat, { masks } from "dateformat";
 import { useEffect } from "react";
-import Container1 from "./Container1";
 import DateTimePicker from "react-datetime-picker";
-import DailyAverage from "./DailyAverage";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-
+import LoadedContainer from "./LoadedContainer";
 import "./Font.css";
-import Cli from "./Cli";
-
-const finnhub = require("finnhub");
-
-const auth = firebase.auth();
-const provider = new firebase.auth.GoogleAuthProvider();
-const db = firebase.firestore();
-const now = new Date();
+import App from "../App";
 
 function Container(props) {
+  const finnhub = require("finnhub");
+  const db = firebase.firestore();
+  const now = new Date();
   const api_key = finnhub.ApiClient.instance.authentications["api_key"];
   api_key.apiKey = "c60l812ad3ifmvvnm9og"; // Replace this
   const finnhubClient = new finnhub.DefaultApi();
@@ -94,6 +88,7 @@ function Container(props) {
     if (time !== "") {
       console.log(stockName);
       console.log("ok");
+      let priceNow;
 
       finnhubClient.quote(stockName.toUpperCase(), (error, data, response) => {
         //current price
@@ -102,6 +97,7 @@ function Container(props) {
         console.log(time);
 
         setCurrentPrice(data.c);
+        priceNow = data.c;
 
         const quoteData = {
           [shortDate]: {
@@ -121,7 +117,8 @@ function Container(props) {
             { merge: true }
           )
           .then(() => {
-            console.log(quoteData);
+            roomRef.update("current_price", priceNow);
+            roomRef.update("Symbol", stockName);
           });
       });
     }
