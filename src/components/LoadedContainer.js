@@ -55,13 +55,18 @@ function LoadedContainer(props) {
       setCurrentTime(strTime);
       console.log(strTime);
 
-      var today = value;
+      //ERROR HERE
+      //IDK RN WHAT IT IS
+      //ERROR HERE
+      //ERROR HERE
+      //ERROR HERE
+      /*    var today = value;
       var dd = String(today.getDate()).padStart(2, "0");
       var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
       var yyyy = today.getFullYear();
       today = mm + "/" + dd + "/" + yyyy;
 
-      setformattedValue(today);
+      setformattedValue(today); */
     }, 2000);
 
     return () => window.clearInterval(timeoutID);
