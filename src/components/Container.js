@@ -244,25 +244,6 @@ function Container(props) {
       <Button variant='outlined' onClick={handleChange}>
         Submit
       </Button>
-      <br></br>
-      <h4>Date Range 1 (Start)</h4>
-      <DateTimePicker onChange={onChange} value={value} />
-      <br></br>
-      <h4>Date Range 2 (End)</h4>
-      <DateTimePicker onChange={onChange2} value={value2} />
-      <br></br>
-      <Button variant='outlined'>Low Average by Range </Button>
-      <Button variant='outlined'>High Average by Range</Button>
-
-      <br></br>
-      <Button variant='outlined' onClick={DailyAverage}>
-        Daily Average
-      </Button>
-      <Button variant='outlined' onClick={RangeAverage}>
-        Range Average
-      </Button>
-      <Button variant='outlined'>Average by time (range)</Button>
-      <Button variant='outlined'>Average by time (all time)</Button>
     </div>
   );
 }

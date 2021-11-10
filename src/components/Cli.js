@@ -43,7 +43,7 @@ function Cli() {
 
   /*   console.log(mappedNodes);
    */ return (
-    <div style={{ marginTop: "50px" }}>
+    <div style={{ marginTop: "20px" }}>
       {nodes.map((node, index) => {
         return (
           <div key={index + 1} style={{ position: "relative", top: "600px" }}>

@@ -65,11 +65,7 @@ function App() {
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "rgb(243,243,243,1)",
-      }}
-    >
+    <div>
       <div id='Nav'>
         <Cli />
 
@@ -80,7 +76,7 @@ function App() {
         {signInStatus}
       </Button>
       <Container />
-      <Button
+      {/*     <Button
         variant='outlined'
         style={{
           position: "relative",
@@ -92,7 +88,7 @@ function App() {
         }}
       >
         Add Stock Tile
-      </Button>
+      </Button> */}
 
       {Array.from({ length: panels }, (_, index) => (
         <Container key={index} />
