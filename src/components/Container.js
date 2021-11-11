@@ -54,6 +54,7 @@ function Container(props) {
   useEffect(() => {
     if (stockName !== "") {
       var today = value;
+      console.log(today);
       var dd = String(today.getDate()).padStart(2, "0");
       var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
       var yyyy = today.getFullYear();
@@ -226,14 +227,15 @@ function Container(props) {
 
   return (
     <div className='container' style={divStyle}>
-      <h2>{time}</h2>
+      <h1>{time}</h1>
 
-      <h3 style={{ position: "absolute", right: "10px" }}>
+      {/*      <h3 style={{ position: "absolute", right: "10px" }}>
         Daily Average: {dailyAverage}
-      </h3>
+      </h3> */}
 
       <Indicator stockName={stockName} />
-      <h3>Current Price: {currentPrice}</h3>
+      <h4>Enter Stock to Start Tracking</h4>
+      {/*       <h3>Current Price: {currentPrice}</h3> */}
       <TextField
         id='outlined-basic'
         label='Stock Symbol'

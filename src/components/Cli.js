@@ -43,13 +43,12 @@ function Cli() {
 
   /*   console.log(mappedNodes);
    */ return (
-    <div style={{ marginTop: "20px" }}>
+    <div /* style={{ marginTop: "20px" }} */>
       {nodes.map((node, index) => {
         return (
-          <div key={index + 1} style={{ position: "relative", top: "600px" }}>
-            {console.log(node.current_price, node.Symbol)}
-            {/*    {console.log(node.data.id)}
-            {console.log(Object.entries(nodes))} */}
+          <div key={index + 1} style={{ position: "relative", top: "480px" }}>
+            {/*  {console.log(node.current_price, node.Symbol)} */}
+
             <LoadedContainer
               key={index + 1}
               id={node.Symbol}
